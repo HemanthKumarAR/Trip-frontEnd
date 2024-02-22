@@ -1,0 +1,39 @@
+
+
+/* Style for Search Seats and Nearest Location */
+.form-label {
+  font-weight: bold;
+}
+
+/* Style for Search and Clear Buttons */
+.btn-search {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: #fff;
+}
+
+.btn-search:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.btn-clear {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  color: #fff;
+}
+
+.btn-clear:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+.mb-3{
+  margin-top: 0px;
+}
+
+/* .justify-content-between {
+  justify-content: unset;
+} */
+
+  

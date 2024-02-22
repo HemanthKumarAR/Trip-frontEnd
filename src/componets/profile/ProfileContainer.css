@@ -1,0 +1,32 @@
+.profile-container {
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 50%;
+  }
+  
+  .custom-heading {
+    font-variant-position: normal;
+    color: #007bff; /* Bootstrap primary color */
+  }
+  
+  .custom-label {
+    font-weight: bold;
+    color: #333; /* Custom label color */
+  }
+  
+  .custom-input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .custom-error {
+    color: red;
+    font-size: 12px;
+  }
+  
+  .custom-button {
+    margin-right: 10px;
+  }
+  
