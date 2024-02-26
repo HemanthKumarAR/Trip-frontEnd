@@ -20,11 +20,11 @@ function AddressForm({ vehicle }) {
   const [selectedDropAddress, setSelectedDropAddress] = useState(null);
   const [locObj, setLocObj] = useState({
     address: '',
-    latlon: ['', ''],
+    pickCoordinate: ['', ''],
   });
   const [dropLocObj, setDropLocObj] = useState({
     address: '',
-    latlon: ['', ''],
+    dropCoordinate: ['', ''],
   });
   const [errors, setErrors] = useState({});
 
@@ -99,7 +99,7 @@ function AddressForm({ vehicle }) {
     setLocObj((prev) => ({
       ...prev,
       address: selectedResult.display_name,
-      latlon: [selectedResult.lat, selectedResult.lon],
+      pickCoordinate: [selectedResult.lat, selectedResult.lon],
     }));
   };
 
@@ -111,7 +111,7 @@ function AddressForm({ vehicle }) {
     setDropLocObj((prev) => ({
       ...prev,
       address: selectedDropResult.display_name,
-      latlon: [selectedDropResult.lat, selectedDropResult.lon],
+      dropCoordinate: [selectedDropResult.lat, selectedDropResult.lon],
     }));
   };
 
@@ -136,6 +136,7 @@ function AddressForm({ vehicle }) {
   const handeleConfirm=()=>{
     console.log('booking')
     console.log(estimateAmount ,'dataaaaa')
+
   dispatch(startBooking(estimateAmount,navigate))
   
   

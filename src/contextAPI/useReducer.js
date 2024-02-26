@@ -24,10 +24,12 @@
       case "USER_UPDATE": {
         return { ...state, user: { ...state.user,...action.payload } };
       }
+      
       case "USER_LOGOUT": {
         // return { ...state, user: { ...action.payload } };
         return { ...state, user: {} }
       }
+      
       default: {
         return { ...state };
       }

@@ -1,3 +1,5 @@
+import { empty } from "../actions/bookingAction"
+
 const intialBookState={
     estimateAmount:{},
     myTrip:[],
@@ -13,6 +15,11 @@ const bookingReducer=(state=intialBookState,action)=>{
      case 'ADD_CALCULATION':{
         return {...state,estimateAmount:action.payload} // adding only one current data
      }
+     case 'EMPTY_ESTIMATE':{
+        console.log('working')
+        return {...state,estimateAmount:{},tripBooking:{},myTrip:[]}
+     }
+     
      case 'ADD_BOOKING':{
     //    return{...state,booking:[...state.booking,action.payload]} // adding along with old data
     return{...state,tripBooking:action.payload}

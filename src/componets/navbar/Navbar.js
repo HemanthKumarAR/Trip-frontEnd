@@ -134,17 +134,22 @@ import { isEmpty } from 'lodash';
 import { jwtDecode } from 'jwt-decode'
 import { UserContext } from '../../App'
 import { useContext } from 'react'
+import { useDispatch } from 'react-redux';
+import { empty } from '../../actions/bookingAction';
 
 
 
 function CoustomerNavbar() {
     const { userState, userDispatch } = useContext(UserContext)
+    const dispatch=useDispatch()
 
     const handleLogout = () => {
         console.log('remove')
         localStorage.removeItem('token')
         localStorage.removeItem('query')
+        dispatch(empty())
         userDispatch({ type: 'USER_LOGOUT' })
+
     }
 
     const roleBasedNav = () => {
@@ -194,7 +199,7 @@ function CoustomerNavbar() {
                     <Nav className="ml-auto">
 
                         <Nav.Link as={Link} to='/'>Home</Nav.Link>
-                        <Nav.Link as={Link} to='/mytrips'>pendingforapproval</Nav.Link>
+                        <Nav.Link as={Link} to='/vehicleapprove'>pendingforapproval</Nav.Link>
                         <Nav.Link as={Link} to='/'>addVehicle</Nav.Link>
                         <Nav.Link as={Link} to='/'>totaluser</Nav.Link>
                         <Nav.Link as={Link} to='/profile'>Profile</Nav.Link>

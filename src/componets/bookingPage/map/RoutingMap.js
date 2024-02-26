@@ -80,7 +80,7 @@
 // export default RoutingMap;
 
 
-import React, { useEffect, useRef } from 'react';
+import React, { memo, useEffect, useRef } from 'react';
 import L from 'leaflet';
 import { createControlComponent } from '@react-leaflet/core';
 import 'leaflet-routing-machine';
@@ -143,4 +143,5 @@ const RoutingMap = ({ pick, drop, drag }) => {
   return <RoutingMachine ref={ref} pick={pick} drop={drop} drag={drag} onWaypointsDrag={handleWaypointsDrag} />;
 };
 
-export default RoutingMap;
+export default memo(RoutingMap)
+

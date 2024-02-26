@@ -22,6 +22,8 @@ import userReducer from "./contextAPI/useReducer"
 import Success from './pages/Success';
 import Cancel from './pages/Cancel';
 
+import VehicleApproval from './componets/admin/vehicleApprove/VehicleApproval';
+
 import BookingDetails from './componets/bookingPage/BookingDetails';
 
 //axios
@@ -34,6 +36,7 @@ import { jwtDecode } from "jwt-decode";
 import { useDispatch } from 'react-redux';
 import { startGetVehicle } from './actions/vehicleAction';
 import { startGetMyTrip } from './actions/bookingAction';
+import { startGetUnApprovedVehicles } from './actions/adminAction';
 
 
 export const UserContext = createContext();
@@ -66,6 +69,10 @@ const dispatch=useDispatch()
             dispatch(startGetMyTrip()) 
           }
 
+          if(jwtDecode(localStorage.getItem('token')).role==='admin'){
+            dispatch(startGetUnApprovedVehicles())
+          }
+
           
   
           userDispatch({
@@ -83,7 +90,7 @@ const dispatch=useDispatch()
   return (
     <UserContext.Provider value={{ userState, userDispatch }}>
     <BrowserRouter>
-    <div>
+    <div style={{backgroundColor: "#fafafa",height: "100vh"}}>
     <Navbar />
     <Routes>
       <Route path='/' element={<Home/>}/>
@@ -102,6 +109,8 @@ const dispatch=useDispatch()
 
       <Route path='/success' element={<Success/>}/>
       <Route path='/cancel' element={<Cancel/>}/>
+
+      <Route path='/vehicleapprove' element={<VehicleApproval/>}/>
 
      
     </Routes>

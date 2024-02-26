@@ -45,13 +45,14 @@ function Book() {
   const location = useLocation();
   const vehicle = location.state.vehicle;
   console.log(vehicle.vehicleName);
+  console.log('hemanth')
 
   const { dropOfflocation, pickUplocation } = useSelector(
-    (state) => state.booking.estimateAmount
+    (state) => state?.booking?.estimateAmount
   );
 
-  const pickUpCoordinate = pickUplocation ? pickUplocation.latlon : null;
-  const dropOffCoordinate = dropOfflocation ? dropOfflocation.latlon : null;
+  const pickUpCoordinate = pickUplocation ? pickUplocation?.pickCoordinate  : null;
+  const dropOffCoordinate = dropOfflocation ? dropOfflocation?.dropCoordinate : null;
 
   return (
     <div className="row">

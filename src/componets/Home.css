@@ -1,8 +1,18 @@
 /*  */
 
 
-.carousel-indicators [data-bs-target]{
+/* .carousel-indicators [data-bs-target]{
+  background-color: #000;
   border-radius: 100%;
-  width: 125px;
+  width: 17px;
   height:10px
+} */
+
+
+
+.carousel-indicators [data-bs-target] {
+  border-radius: 100%;
+  background-color: #000;
+  width: 17px;
+  height: 25px;
 }

@@ -15,6 +15,7 @@ import { UserContext } from "../../App";
 import { useDispatch } from "react-redux";
 import { startGetVehicle } from '../../actions/vehicleAction';
 import {startGetMyTrip} from '../../actions/bookingAction'
+import {startGetUnApprovedVehicles} from '../../actions/adminAction'
 
 const UserLogin = () => {
   const [email, setEmail] = useState('');
@@ -69,6 +70,10 @@ const UserLogin = () => {
       if(profile.data.role==='customer'){
         dispatch(startGetMyTrip()) 
       }
+      if(profile.data.role==='admin'){
+        dispatch(startGetUnApprovedVehicles())
+      }
+      
 
 
       profile.data.role === 'customer' ? navigate('/uhome') : navigate('/');
@@ -80,7 +85,7 @@ const UserLogin = () => {
   }
 
   return (
-    <div style={{ backgroundColor: "#fafafa", height: "90vh", margin: "0px", }}>
+    <div style={{ backgroundColor: "#fafafa", height: "80.5vh", margin: "0px",marginTop:'5%' }}>
     <Container className="login-container">
       <Row className="justify-content-center">
         <Col md={6}>

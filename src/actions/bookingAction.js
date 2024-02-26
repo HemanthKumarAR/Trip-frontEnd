@@ -23,6 +23,24 @@ export const startGetEstimateAmount=(body)=>{
 
 }
 
+export const empty=()=>{
+
+    return async (dispatch)=>{
+        dispatch(
+            setEmpty()
+        )
+       
+
+    }
+
+}
+const setEmpty=()=>{
+    return{
+        type:"EMPTY_ESTIMATE" 
+    }
+
+}
+
 export const startBooking=(body,navigate)=>{
     
     console.log(body)
@@ -33,7 +51,7 @@ export const startBooking=(body,navigate)=>{
                         Authorization: localStorage.getItem('token')
                     }
                  })
-                 console.log(book.data)
+                 console.log(book.data ,'boocking action for book ')
                  dispatch(getBook(book.data))
                  navigate('/bookDetails')
                  

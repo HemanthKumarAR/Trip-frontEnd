@@ -9,8 +9,8 @@ import 'leaflet/dist/leaflet.css';
 
 function Map({ coordinates, drag }) {
    const [pickUpCoordinate,dropOffCoordinate]=coordinates
-   console.log(pickUpCoordinate)
-   console.log(dropOffCoordinate)
+   console.log(pickUpCoordinate,dropOffCoordinate ,'details')
+  
     
   return (
 
@@ -35,7 +35,7 @@ function Map({ coordinates, drag }) {
          {/* {pickUpCoordinate && <Marker position={pickUpCoordinate} icon={customIcon}></Marker>}
          {dropOffCoordinate && <Marker position={dropOffCoordinate} icon={customIcon}></Marker>} */}
          
-         {coordinates[0] && (
+         {coordinates[0] && coordinates[1] &&(
          <RoutingMap 
           pick={coordinates[0]}
           drop={coordinates[1]}

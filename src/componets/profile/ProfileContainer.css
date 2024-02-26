@@ -1,10 +1,11 @@
-.profile-container {
+/* .profile-container {
     padding: 20px;
     margin: 20px;
     border: 1px solid #ddd;
     border-radius: 8px;
-    width: 50%;
-  }
+    width: 50%; */
+    /* margin-top: 20%; */
+  /* } */
   
   .custom-heading {
     font-variant-position: normal;
@@ -22,11 +23,32 @@
   }
   
   .custom-error {
-    color: red;
+    color: rgb(25, 0, 255);
     font-size: 12px;
   }
   
   .custom-button {
-    margin-right: 10px;
+    margin-right: 55px;
+
   }
+
+  .profile-name{
+    margin-top: 11%;
+  }
+
+  .profile-image{
+    margin-top: 3%;
+  }
+
+  .profile-details{
+    /* margin-left: 49%; */
+    margin-top: 2%;
+  }
+
+  .edit-profile{
+    margin-top: 40px;
+    margin-left: 400px;
+  }
+
+
   
