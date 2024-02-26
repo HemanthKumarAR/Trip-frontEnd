@@ -14,7 +14,7 @@ function EditProfile(props) {
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [formError, setFormError] = useState({});
-
+//edit profile
   const errors={}
 
   const editHandleFunction = () => {
