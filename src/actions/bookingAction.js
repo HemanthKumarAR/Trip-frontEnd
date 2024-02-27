@@ -81,23 +81,48 @@ export const startGetMyTrip=()=>{
 }
 
 
-export const startPayment = (tripId)=>{
-    return async(dispatch)=>{
-        console.log('payment api')
-        try{
-        const response = await axios.post(`api/booking/${tripId}/payment`,{
-            headers:{
-                Authorization: localStorage.getItem('token')
-            }
-         })
-            console.log(response.data.id)
-            dispatch(setStartBooking(response.data)) 
+// export const startPayment = (tripId)=>{
+//     return async(dispatch)=>{
+//         console.log('payment api' ,localStorage.getItem('token'))
+        
+//         try{
+//         const response = await axios.post(`api/booking/${tripId}/payment`,{
+//             headers:{
+//                 Authorization: localStorage.getItem('token')
+//             }
+//          })
+//             console.log(response.data.id)
+//             dispatch(setStartBooking(response.data)) 
   
-        }catch(err){
-            console.log(err)
-        }
-    }
-}
+//         }catch(err){
+//             console.log(err)
+//         }
+//     }
+// }
+
+export const startPayment = (tripId) => {
+    return async (dispatch) => {
+      console.log('payment api', localStorage.getItem('token'));
+  
+      try {
+        const response = await axios.post(
+          `api/booking/${tripId}/payment`,
+          
+          {headers:{
+            Authorization:localStorage.getItem('token'),
+                  }
+                }
+          
+        );
+        dispatch(setStartBooking(response.data))
+        console.log(response.data.id);
+        // Assuming `setStartBooking` is an action creator, make sure it's imported correctly.
+        // dispatch(setStartBooking(response.data));
+      } catch (err) {
+        console.log(err);
+      }
+    };
+  };
 
 const setStartBooking = (data)=>{
     if(data){

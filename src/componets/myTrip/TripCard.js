@@ -1,7 +1,16 @@
 import React from 'react';
 import { Button, Card, Col, Row } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { startPayment } from '../../actions/bookingAction';
+
+
+
 
 const TripCard = ({ trip }) => {
+ const dispatch=useDispatch()
+    const handlePaymet=()=>{
+        dispatch(startPayment(trip._id))
+    }
     return (
         <Card style={{ width: '75rem', height: '320px' }}>
             <Row>
@@ -24,7 +33,7 @@ const TripCard = ({ trip }) => {
                         <Card.Text><strong>Total Amount:</strong> {trip.totalAmount}</Card.Text>
                         <Card.Text><strong>Payment Status:</strong> {trip.paymentStatus ? 'Paid' : 'Pending'}</Card.Text>
                         
-                        <Button>Payment</Button>
+                        <Button onClick={handlePaymet}>Payment</Button>
                     </Card.Body>
                 </Col>
             </Row>

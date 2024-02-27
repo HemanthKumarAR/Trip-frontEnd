@@ -7,11 +7,12 @@ max-width: 600px;
   max-width: 450px;
 } */
 .register-container {
-  width: 7000px;
+  width: 750px;
   background-color: #fff;
   border-radius: 25px;
   padding: 25px;
   box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.2);
+  
 }
 
 .register-container h2 {

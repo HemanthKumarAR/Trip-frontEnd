@@ -158,12 +158,14 @@ function CoustomerNavbar() {
         console.log(role)
         if (role === 'customer') {
             return (
-                <Navbar bg='dark' data-bs-theme='dark' className="justify-content-between">
+                <Navbar style={{backgroundColor : "#FFFFFF"}} sticky="top">
                     {/* <Container className="navbar-container" style={{ backgroundColor: '#343a40', padding: '0', marginLeft: '4%' }}> */}
-                    <Container className="navbar-container" >
+                    {/* <Container className="navbar-container" > */}
 
-                        <Navbar.Brand href="#home">One day Trip</Navbar.Brand>
-                    </Container>
+                        <Navbar.Brand href="#home" className='navbar-title'>
+                            One day Trip
+                            </Navbar.Brand>
+                    {/* </Container> */}
                     <Nav className="ml-auto">
 
                         <Nav.Link as={Link} to='/uhome'>Home</Nav.Link>
@@ -175,10 +177,12 @@ function CoustomerNavbar() {
             )
         } else if (role === 'driver') {
             return (
-                <Navbar bg='dark' data-bs-theme='dark' className="justify-content-between">
-                    <Container className="navbar-container" >
-                        <Navbar.Brand href="#home">One day Trip</Navbar.Brand>
-                    </Container>
+                <Navbar style={{backgroundColor : "#FFFFFF"}} sticky="top">
+                    {/* <Container className="navbar-container" > */}
+                        <Navbar.Brand href="#home" className='navbar-title'>
+                            One day Trip
+                            </Navbar.Brand>
+                    {/* </Container> */}
                     <Nav className="ml-auto">
 
                         <Nav.Link as={Link} to='/'>Home</Nav.Link>
@@ -192,12 +196,18 @@ function CoustomerNavbar() {
             )
         } else if (role === 'admin') {
             return (
-                <Navbar bg='dark' data-bs-theme='dark' className="justify-content-between">
-                    <Container className="navbar-container" >
-                        <Navbar.Brand href="#home">One day Trip</Navbar.Brand>
-                    </Container>
+                <div>
+
+                
+                <Navbar style={{backgroundColor : "#FFFFFF"}} sticky="top">
+                    {/* <Container className="navbar-container" > */}
+                        <Navbar.Brand href="#home" className='navbar-title'>
+                            One day Trip
+                            </Navbar.Brand>
+                    {/* </Container> */}
                     <Nav className="ml-auto">
 
+                      
                         <Nav.Link as={Link} to='/'>Home</Nav.Link>
                         <Nav.Link as={Link} to='/vehicleapprove'>pendingforapproval</Nav.Link>
                         <Nav.Link as={Link} to='/'>addVehicle</Nav.Link>
@@ -205,7 +215,9 @@ function CoustomerNavbar() {
                         <Nav.Link as={Link} to='/profile'>Profile</Nav.Link>
                         <Nav.Link as={Link} to='/' onClick={handleLogout}>LogOut </Nav.Link>
                     </Nav>
+                    
                 </Navbar>
+                </div>
             )
         }
     }
@@ -213,15 +225,16 @@ function CoustomerNavbar() {
         <div>
             {isEmpty(userState.user) ?
 
-                <Navbar bg="dark" data-bs-theme="dark" className="justify-content-between">
-                    <Container className="navbar-container" >
-                        <Navbar.Brand href="#home">One day Trip</Navbar.Brand>
-                    </Container>
+                <Navbar  style={{backgroundColor : "#FFFFFF"}} sticky="top">
+                    {/* <Container className="navbar-container" > */}
+                        <Navbar.Brand href="#home" className='navbar-title'>
+                            My Trip
+                        </Navbar.Brand>
+                    {/* </Container> */}
                     <Nav className="ml-auto">
                         <Nav.Link as={Link} to='/'>Home</Nav.Link>
                         <Nav.Link as={Link} to='/register'>Register</Nav.Link>
                         <Nav.Link as={Link} to='/login'>Login</Nav.Link>
-
                     </Nav>
                 </Navbar>
                 : roleBasedNav()

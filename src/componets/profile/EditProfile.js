@@ -21,6 +21,10 @@ function EditProfile(props) {
     setOpen(true);
   };
 
+  const handleClose=()=>{
+    setOpen(false)
+  }
+
 useEffect(()=>{
     if(username && mobileNumber && uEmail){
         setName(username)
@@ -32,7 +36,7 @@ useEffect(()=>{
 
 const runValidation=()=>{
     if(name===""){
-        errors.name = "First Name is required";
+        errors.name = "Name is required";
     }
     if (email.trim().length === 0) {
         errors.email = "email is required";
@@ -49,88 +53,92 @@ const runValidation=()=>{
 
 }
 
-const handleEditSubmit= async(e)=>{
-    e.preventDefault()
-    runValidation()
-    if(Object.keys(formError).length===0){
-        setFormError({})
-        const formData={
-            username:name,
-            email:email,
-            mobileNumber:phone
+const handleEditSubmit = async (e) => {
+  e.preventDefault();
+  runValidation();
+  if (Object.keys(errors).length === 0) {
+    // Clear form errors
+    setFormError({});
+    const formData = {
+      username: name,
+      email: email,
+      mobileNumber: phone
+    };
+    console.log(formData);
+    try {
+      const updateProfileResponse = await axios.put(
+        "api/update-account",
+        formData,
+        {
+          headers: {
+            Authorization: localStorage.getItem("token")
+          }
         }
-        console.log(formData)
-        try{
-            const updateProfileResponse = await axios.put(
-                          "api/update-account",
-                          formData,
-                          {
-                            headers: {
-                              Authorization: localStorage.getItem("token"),
-                            },
-                          }
-                        );
-                        userDispatch({ type: "USER_UPDATE",
-                                      payload: updateProfileResponse.data,
-                                    });
-                     setOpen(false)
-        }catch(e){
-          console.log(e.response.data.errors)
-        }
-    }else{
-        setFormError(errors)
+      );
+      userDispatch({
+        type: "USER_UPDATE",
+        payload: updateProfileResponse.data
+      });
+      setOpen(false);
+    } catch (e) {
+      console.log(e.response.data.errors);
     }
+  } else {
+    // Set form errors
+    setFormError(errors);
+  }
+};
 
 
-}
+return (
+  <div className='edit-profile'>
+    <Button className='edit-buttn' onClick={editHandleFunction}>Edit</Button>
 
-  return (
-    <div className='edit-profile'>
-      <Button onClick={editHandleFunction}>Edit</Button>
-
-      <Modal show={open}>
-        <Modal.Header closeButton>
-          <Modal.Title>Edit Profile</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form onSubmit={handleEditSubmit}>
-            <Form.Group controlId="name">
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter your name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                isInvalid={!!formError.name}
-              />
-            </Form.Group>
-            <Form.Group controlId="phone">
-              <Form.Label>Phone Number</Form.Label>
-              <Form.Control
-                type="number"
-                placeholder="Enter your phone number"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                isInvalid={!!formError.phone}
-              />
-            </Form.Group>
-            <Form.Group controlId="email">
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter your phone number"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                isInvalid={!!formError.phone}
-              />
-            </Form.Group>
-            <Button type="submit" variant="primary">submit</Button>
-          </Form>
-
-        </Modal.Body>
-      </Modal>
-    </div>
-  );
+    <Modal show={open} onHide={handleClose} className='class-modal'>
+      <Modal.Header closeButton>
+        <Modal.Title>Edit Profile</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <Form onSubmit={handleEditSubmit}>
+          <Form.Group controlId="name">
+            <Form.Label>Name</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter your name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            {formError.name && <span className="text-danger">{formError.name}</span>}
+          </Form.Group>
+          <Form.Group controlId="phone">
+            <Form.Label>Phone Number</Form.Label>
+            <Form.Control
+              type="number"
+              placeholder="Enter your phone number"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              isInvalid={!!formError.phone}
+            />
+            {formError.phone && <span className="text-danger">{formError.phone}</span>}
+          </Form.Group>
+          <Form.Group controlId="email">
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              isInvalid={!!formError.email}
+            />
+            {formError.email && <span className="text-danger">{formError.email}</span>}
+          </Form.Group>
+          <Button type="submit" className='submit-buttn'>Submit</Button>
+        </Form>
+        <Button className='close-buttn' onClick={handleClose}>Close</Button>
+      </Modal.Body>
+    </Modal>
+  </div>
+);
 }
 
 export default EditProfile;

@@ -32,6 +32,8 @@
 
   }
 
+  /* css part*/
+
   .profile-name{
     margin-top: 11%;
   }
@@ -47,7 +49,31 @@
 
   .edit-profile{
     margin-top: 40px;
-    margin-left: 400px;
+    margin-left: 450px;
+  }
+
+.edit-buttn{
+  width: 100px;
+}
+
+  .class-modal{
+    margin-left: 50px;
+    /* height: fit-content; */
+    max-width: 100%;
+    /* margin-top: 10%; */
+  }
+
+  .submit-buttn{
+    margin-top: 10px;
+    margin-left: 75%;
+    width: 100px;
+    
+  }
+
+  .close-buttn{
+    margin-top: 10px;
+    margin-top: -69px;
+    width: 100px;
   }
 
 

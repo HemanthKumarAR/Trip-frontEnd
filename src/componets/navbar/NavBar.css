@@ -5,6 +5,16 @@
     margin-left: 4%;
   }
 
-  .ml-auto{
-    margin-right: 4%;
+  .navbar-title{
+    margin-left:5% ;
   }
+
+  .ml-auto{
+    margin-left :65% ;
+  }
+
+  /* .ml-auto:hover{
+    background-color: yellow;
+  } */
+
+  

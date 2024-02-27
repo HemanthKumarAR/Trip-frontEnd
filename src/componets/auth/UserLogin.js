@@ -86,9 +86,9 @@ const UserLogin = () => {
 
   return (
     <div style={{ backgroundColor: "#fafafa", height: "80.5vh", margin: "0px",marginTop:'5%' }}>
-    <Container className="login-container">
+    <Container >
       <Row className="justify-content-center">
-        <Col md={6}>
+        <Col md={6} className="login-container">
           {serverError.length > 0 && (
             <div className="alert alert-danger">
               {serverError.map(ele => (
