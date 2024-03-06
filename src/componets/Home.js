@@ -140,12 +140,15 @@ import { Link } from 'react-router-dom';
 import taxi1 from '../componets/images/taxi1.jpg'
 import { SocialIcon } from 'react-social-icons';
 import './Home.css';
+import HomeCarousel from './HomeCarousel';
 
 function Home() {
   return (
+    <div>
+    <HomeCarousel/>
     <Container fluid>
       {/* Carousel */}
-      <Row >
+      {/* <Row >
         <Col>
           <Carousel data-bs-theme="dark" className='carousel-image' style={{maxWidth: '70%', marginLeft:'15%'}} >
             <Carousel.Item>
@@ -174,7 +177,7 @@ function Home() {
             </Carousel.Item>
           </Carousel>
         </Col>
-      </Row>
+      </Row> */}
 
       {/* Section 1 */}
       <div>
@@ -235,6 +238,7 @@ function Home() {
       </Row>
       </div>
     </Container>
+    </div>
   );
 }
 

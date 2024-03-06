@@ -9,6 +9,9 @@ import { startGetEstimateAmount ,startBooking} from '../../actions/bookingAction
 import {isEmpty} from 'lodash'
 import { useNavigate } from "react-router-dom"
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function AddressForm({ vehicle }) {
   const { _id } = vehicle;
   console.log(_id);
@@ -42,6 +45,8 @@ function AddressForm({ vehicle }) {
 //  },[tripDetails,navigate])
 
 
+
+
   const dispatch = useDispatch();
   const {estimateAmount}= useSelector((state)=>{
     return state.booking
@@ -50,6 +55,7 @@ function AddressForm({ vehicle }) {
    console.log(estimateAmount)
 
   const fetchAddresses = async () => {
+    console.log("100")
     try {
       const GEO_CODE_API_KEY = '659802a9ecc6a876797382jag35e1f0';
       const response = await axios.get(
@@ -92,6 +98,7 @@ function AddressForm({ vehicle }) {
   };
 
   const handleAddressSelect = (selectedOption) => {
+    
     setSelectedAddress(selectedOption);
     const selectedResult = searchResults.find(
       (result) => result.place_id === selectedOption.value
@@ -134,8 +141,8 @@ function AddressForm({ vehicle }) {
   };
 
   const handeleConfirm=()=>{
-    console.log('booking')
-    console.log(estimateAmount ,'dataaaaa')
+    // console.log('booking')
+    // console.log(estimateAmount ,'dataaaaa')
 
   dispatch(startBooking(estimateAmount,navigate))
   

@@ -19,13 +19,15 @@ import thunk from 'redux-thunk';
 import vehicleReducer from '../reducers/vehicleReducer';
 import bookingReducer from '../reducers/bookingReducer'; // Corrected import
 import adminReducer from '../reducers/adminReducer'
+import driverReducer from '../reducers/driverReducer';
 
 const configStore = () => {
     const store = createStore(
         combineReducers({
             vehicle: vehicleReducer, 
             booking: bookingReducer,
-            admin:adminReducer
+            admin:adminReducer,
+            driver:driverReducer
         }),
         applyMiddleware(thunk)
     );

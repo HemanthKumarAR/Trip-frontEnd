@@ -8,12 +8,15 @@ import Home from './componets/Home';
 import UserRegister from './componets/auth/UserRegister';
 import UserLogin from './componets/auth/UserLogin';
 import Search from './componets/search/SearchContainer';
+import HomeCarousel from './componets/HomeCarousel';
 import ProfileContainer from './componets/profile/ProfileContainer'
 import VehicleResult from './componets/serachResult/VehicleResult';
 import MyVehicle from './componets/vehicleDetails/MyVehicle';
-import AddVehicle from './componets/vehicleDetails/AddVehicle';
+
+import AddVehicle from "./componets/vehicleDetails/AddVehicle.js"
 import Book from './componets/bookingPage/Book';
 // import MyTrip from './componets/myTrip/mytrip.js'
+// import MyTrip from './componets/myTrip/'
 import TripDetails from './componets/myTrip/TripDetails';
 import { BrowserRouter,Routes,Route ,Link} from 'react-router-dom';
 //userReducer ,context api
@@ -26,6 +29,8 @@ import VehicleApproval from './componets/admin/vehicleApprove/VehicleApproval';
 
 import BookingDetails from './componets/bookingPage/BookingDetails';
 
+import MyOrder from './componets/driverComponet/myOrder/MyOrder.js';
+
 //axios
 import axios from './config/axios';
 
@@ -37,7 +42,7 @@ import { useDispatch } from 'react-redux';
 import { startGetVehicle } from './actions/vehicleAction';
 import { startGetMyTrip } from './actions/bookingAction';
 import { startGetUnApprovedVehicles } from './actions/adminAction';
-
+import { startGetDriverorder } from './actions/driverAction.js';
 
 export const UserContext = createContext();
 function App() {
@@ -63,6 +68,7 @@ const dispatch=useDispatch()
 
           if(jwtDecode(localStorage.getItem('token')).role==='driver'){
             dispatch(startGetVehicle())
+            dispatch(startGetDriverorder())
           }
 
           if(jwtDecode(localStorage.getItem('token')).role==='customer'){
@@ -90,10 +96,11 @@ const dispatch=useDispatch()
   return (
     <UserContext.Provider value={{ userState, userDispatch }}>
     <BrowserRouter>
-    <div style={{backgroundColor: "#fafafa",height: "100vh"}}>
+    <div style={{backgroundColor: "#fafafa"}}>
     <Navbar />
     <Routes>
       <Route path='/' element={<Home/>}/>
+      <Route path='/home' element={<HomeCarousel/>}/>
       <Route path='/register' element={<UserRegister/>}/>
       <Route path='/login' element={<UserLogin/>}/>
 
@@ -106,6 +113,8 @@ const dispatch=useDispatch()
       <Route path='/book' element={<Book/>}/>
 
       <Route path='/bookDetails' element={<BookingDetails/>}/>
+
+      <Route path='/myorder' element={<MyOrder/>}/>
 
       <Route path='/success' element={<Success/>}/>
       <Route path='/cancel' element={<Cancel/>}/>

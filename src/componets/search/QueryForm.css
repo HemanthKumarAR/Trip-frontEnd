@@ -7,15 +7,15 @@
 
 /* Style for Search and Clear Buttons */
 .btn-search {
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: "#0096FF";
+  margin-top:"31px";
   color: #fff;
 }
 
-.btn-search:hover {
+/* .btn-search:hover {
   background-color: #0056b3;
   border-color: #0056b3;
-}
+} */
 
 .btn-clear {
   background-color: #6c757d;

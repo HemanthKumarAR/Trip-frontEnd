@@ -8,7 +8,7 @@ const updateIsLoading = (boolean) => {
     }
 }
 //driver adding vehicle 
-export const startAddVehicle = (body) => {
+export const startAddVehicle = (body,navigate) => {
     return async (dispatch) => {
         try {
             const addVehcileResponse = await axios.post('api/add-details', body, {
@@ -16,9 +16,13 @@ export const startAddVehicle = (body) => {
                     Authorization: localStorage.getItem('token')
                 }
             })
+            console.log(addVehcileResponse.data)
             dispatch(addVehcile(addVehcileResponse.data))
+            navigate('/myvehicle')
         } catch (e) {
             console.log(e)
+            // console.log(e.response.data.errors)
+            // dispatch(serverErrors(e.response.data.errors))
         }
     }
 }
@@ -42,7 +46,7 @@ export const startGetVehicle = () => {
             console.log(getVehicle.data)
             dispatch(getVehicles(getVehicle.data))
         } catch (e) {
-            console.log(e)
+            console.log(e ,'error')
         }
     }
 
@@ -108,6 +112,11 @@ const setSearchedvehicle = (vehicle) => {
         payload: vehicle
     }
 
+}
 
-
+const serverErrors =(data)=>{
+    return{
+        type:"SERVER_ERROR",
+        payload:data
+    }
 }

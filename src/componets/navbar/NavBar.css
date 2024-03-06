@@ -1,16 +1,16 @@
 .navbar-container {
 
     padding: 0; /* Remove padding */
-    max-width: px;
+  
     margin-left: 4%;
   }
 
   .navbar-title{
-    margin-left:5% ;
+    margin-left:3% ;
   }
 
-  .ml-auto{
-    margin-left :65% ;
+  .mr-auto{
+    margin-left :45% ;
   }
 
   /* .ml-auto:hover{

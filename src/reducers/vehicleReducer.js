@@ -1,7 +1,8 @@
 const initialVehicleState = {
     serachedVehicle:[],
     // isLoading: false,
-    myVehicle:[]
+    myVehicle:[],
+    serverError:[]
   }
 
 
@@ -18,6 +19,7 @@ const initialVehicleState = {
           }
         }
         case 'ADD_VEHICLE':{
+          // console.log({...state})
            return {...state,myVehicle:[...state.myVehicle,action.payload]}
           // return {...state,myVehicle:action.payload}
         }
@@ -31,6 +33,9 @@ const initialVehicleState = {
             ...state,
             myVehicle: state.myVehicle.filter(ele => ele._id !== action.payload._id)
           };
+        }
+        case 'SERVER_ERROR':{
+          return{...state,serverError:action.payload}
         }
         default:{
            return {...state}

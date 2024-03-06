@@ -310,6 +310,7 @@ import { isNumber } from "lodash";
 import axios from '../../config/axios';
 import { Form, Button, Container, Col, Row } from 'react-bootstrap';
 import './UserRegister.css'
+import taxi1 from '.././images/taxi1.jpg'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -370,8 +371,103 @@ const UserRegister = () => {
     };
 
     return (
-        <div style={{ backgroundColor: "#fafafa", height: "80.5vh", marginLeft: "20%", width:'65%',marginTop:"1.5%"}}>
-        <Container className="register-container">
+
+        // <Container className="register-container" >
+        //     <Row className="justify-content-md-center">
+        //         <Col md={6}>
+        //             {serverErrors.length > 0 && (
+        //                 <div className="alert alert-danger">
+        //                     {serverErrors.map(ele => (
+        //                         <li key={ele.msg}>{ele.msg}</li>
+        //                     ))}
+        //                 </div>
+        //             )}
+        //             <h2>Register Here</h2>
+        //             <Form onSubmit={handleSubmit}>
+        //                 <Form.Group className="mb-3" controlId="username">
+        //                     <Form.Label>Name:</Form.Label>
+                            // <Form.Control
+                            //     type="text"
+                            //     placeholder="Enter username"
+                            //     value={username}
+                            //     onChange={(e) => setUsername(e.target.value)}
+                            // />
+        //                     {formErrors.username && <span className="text-danger">{formErrors.username}</span>}
+        //                 </Form.Group>
+        //                 <Form.Group className="mb-3" controlId="email">
+        //                     <Form.Label>Email:</Form.Label>
+        //                     <Form.Control
+        //                         type="text"
+        //                         placeholder="Enter email"
+        //                         value={email}
+        //                         onChange={(e) => setEmail(e.target.value)}
+        //                     />
+        //                     {formErrors.email && <span className="text-danger">{formErrors.email}</span>}
+        //                 </Form.Group>
+        //                 <Form.Group className="mb-3" controlId="mobileNumber">
+        //                     <Form.Label>Mobile Number:</Form.Label>
+        //                     <Form.Control
+        //                         type="number"
+        //                         placeholder="Enter mobile number"
+        //                         value={mobileNumber}
+        //                         onChange={(e) => setMobileNumber(e.target.value)}
+        //                     />
+        //                     {formErrors.mobileNumber && <span className="text-danger">{formErrors.mobileNumber}</span>}
+        //                 </Form.Group>
+        //                 <Form.Group className="mb-3" controlId="password">
+        //                     <Form.Label>Password:</Form.Label>
+        //                     <Form.Control
+        //                         type="password"
+        //                         placeholder="Enter password"
+        //                         value={password}
+        //                         onChange={(e) => setPassword(e.target.value)}
+        //                     />
+        //                     {formErrors.password && <span className="text-danger">{formErrors.password}</span>}
+        //                 </Form.Group>
+        //                 <Form.Group>
+        //                     <Form.Check
+        //                         inline
+        //                         type="radio"
+        //                         name="role"
+        //                         value="customer"
+        //                         label="Customer"
+        //                         onChange={(e) => setRole(e.target.value)}
+        //                     />
+        //                     <Form.Check
+        //                         inline
+        //                         type="radio"
+        //                         name="role"
+        //                         value="driver"
+        //                         label="Driver"
+        //                         onChange={(e) => setRole(e.target.value)}
+        //                     />
+        //                 </Form.Group>
+        //                 <Button  style={{ backgroundColor: "#0096FF", color: "white",  marginLeft:"30%", marginTop:"10px",width:'25%'}}  type="submit" variant="primary">Register</Button>
+        //             </Form>
+        //             <div>
+
+        //             <h5>Do you have an account? <Link to='/login'>Login</Link></h5>
+        //             </div>
+        //         </Col>
+        //     </Row>
+        // </Container>
+        
+        // </div>
+
+        <div>
+            <Container fluid>
+                <Row>
+                    <Col mad={6}>
+                    <img
+                className="d-block w-100"
+                src={taxi1}
+                alt="First slide"
+                style={{ height: '585px'}} 
+              />
+                    </Col>
+
+                    <Col md={6}>
+                    <Container className="register-container" >
             <Row className="justify-content-md-center">
                 <Col md={6}>
                     {serverErrors.length > 0 && (
@@ -441,13 +537,21 @@ const UserRegister = () => {
                                 onChange={(e) => setRole(e.target.value)}
                             />
                         </Form.Group>
-                        <Button type="submit" variant="primary">Register</Button>
+                        <Button  style={{ backgroundColor: "#0096FF", color: "white",marginLeft:"95px", marginTop:"10px",width:'35%'}}  type="submit" variant="primary">Register</Button>
                     </Form>
-                    <h5>Do you have an account? <Link to='/login'>Login</Link></h5>
+                    <div>
+
+                    <h5>Already a member ?<Link to='/login'>Login</Link></h5>
+                    </div>
                 </Col>
             </Row>
         </Container>
-        
+                   
+                    
+                    </Col>
+
+                </Row>
+            </Container>
         </div>
     );
 };
