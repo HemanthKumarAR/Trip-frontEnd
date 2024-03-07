@@ -58,6 +58,7 @@ function MyOrderDetails({ myOrder }) {
     dispatch(startTripOtpVerify(formData))
     setShowStartTripModal(false)
     setOTP('')
+    console.log('start trip verify')
   };
 
 
