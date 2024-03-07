@@ -1,37 +1,4 @@
-// import React from 'react'
-// import { useEffect } from 'react'
-// import { useSelector ,useDispatch} from 'react-redux'
-// import MyOrderDetails from './MyOrderDetails'
-// import { startGetDriverorder } from '../../../actions/driverAction'
 
-// function MyOrder( ) {
-//   const myOrder= useSelector((state)=>state.driver.myOrder)
-//  const dispatch= useDispatch()
-
-//   console.log(myOrder)
-//   // useEffect(()=>{
-//   //   dispatch(startGetDriverorder())
-
-//   // },[dispatch])
-
-
-//   return (
-    
-//     <div>
-//        {myOrder.length===0 ?(
-//          <h1> No Trip found</h1>
-//        ):(
-//         <div>
-//             {myOrder.map((myOrder)=>{
-//               return < MyOrderDetails  key={myOrder._id} myOrder={myOrder}/>
-//             })}
-//           </div>
-//        )}
-//     </div>
-//   )
-// }
-
-// export default MyOrder
 
 
 

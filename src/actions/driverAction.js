@@ -94,6 +94,29 @@ export const startTripOtpVerify=(body)=>{
 }
 
 
+export const endTripOtpVerify=(body)=>{
+    return async(dispatch)=>{
+        try{
+            const orderRejectResponse=    await axios.post('api/end/otp',body,{
+                headers:{Authorization: localStorage.getItem('token') }
+              })
+              console.log(orderRejectResponse.data)
+              if(orderRejectResponse.status==201){
+                toast.success(orderRejectResponse.data.message)
+                dispatch(setOrderAccept(orderRejectResponse.data.tripUpdate))
+                // res.json({ message: 'trip is verified',tripUpdate});
+            }else{
+                toast.error(orderRejectResponse.data.error)
+            }
+        }catch(error){
+            console.log(error)
+
+            toast.error(error.response.data.error)
+        }
+    }
+}
+
+
 const setMyOrders=(data)=>{
     return{
         type:"DRIVER_ORDER",
