@@ -1,4 +1,6 @@
+import { toast } from "react-toastify"
 import axios from "../config/axios"
+
 
 export const startAddRating=(body)=>{
     console.log(body)
@@ -9,7 +11,14 @@ export const startAddRating=(body)=>{
                     Authorization: localStorage.getItem('token')
                 }
             })
+            if(Object.keys(reviewResponse.data.error).length>0){
+
+                toast.error(reviewResponse.data.error)
+            }else{
+                
+            }
             console.log(reviewResponse.data)
+
         }catch(error){
             console.log(error)
         }

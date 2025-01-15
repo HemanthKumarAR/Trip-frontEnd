@@ -99,7 +99,7 @@ function CustomerNavbar() {
                                     <NavDropdown.Item as={Link} to='/myorder'>myOrders</NavDropdown.Item> */}
                                     <NavDropdown.Item as={Link} to='/addvehicle'>addVehicle</NavDropdown.Item>
                                     <NavDropdown.Item as={Link} to='/myvehicle'>MyVehicle</NavDropdown.Item>
-                                    <NavDropdown.Item as={Link} to='/profile'>Profile</NavDropdown.Item>
+                                    <NavDropdown.Item as={Link} to='/dashboard'>DashBoard</NavDropdown.Item>
                                 </NavDropdown>
                                          <Nav.Link as={Link} to='/profile'>Profile</Nav.Link>
                                 </>

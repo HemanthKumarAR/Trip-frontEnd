@@ -206,7 +206,7 @@ const YourFormComponent = () => {
               <Col md={6}>
                 <h2> part2</h2>
                 <Form.Group className="mb-3" controlId="pricePerKm">
-                  <Form.Label>Peice per km</Form.Label>
+                  <Form.Label>Price per km</Form.Label>
                   <Form.Control
                     type="text"
                     placeholder="Price per Km"

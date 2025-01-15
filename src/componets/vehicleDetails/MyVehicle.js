@@ -5,7 +5,7 @@ import React from 'react';
 import { useSelector ,useDispatch} from 'react-redux';
 import './MyVehicle.css';
 import { startRemoveVehicle } from '../../actions/vehicleAction';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Card, Container, Row, Col, Button } from 'react-bootstrap';
 
 
@@ -66,18 +66,20 @@ function MyVehicle() {
     // </div>
     <Container>
          <h2 className="text-center my-4">My Vehicles</h2>
-      <Row xs={1} md={6} className="g-4">
+      <Row xs={1} md={6} className="g-4" >
         {vehicles.length === 0 ? (
-          <Col>
+          
+          <div>
             <h3>No vehicles found</h3>
             <h3>Please add a vehicle</h3>
-          </Col>
+            <Link to="/addvehicle">click here to add vehicle</Link>
+          </div>
         ) : (
           vehicles.map((vehicle, index) => (
-            <Col key={index}>
-              <Card className="h-100">
+            <Col key={index} style={{width:"80%", height:"800px"}}>
+              <Card style={{width:"80%", height:"800px"}} >
                 <Card.Body>
-                  <Card.Title>Vehicle Name: {vehicle.vehicleName}</Card.Title>
+                  <Card.Title>Vehicle Name : {vehicle.vehicleName} </Card.Title>
                   <Card.Text>Price per KM: {vehicle.pricePerKm}</Card.Text>
                   <Card.Text>Seating capacity: {vehicle.seating}</Card.Text>
                   <Card.Text>Vehicle number: {vehicle.vehicleNumber}</Card.Text>

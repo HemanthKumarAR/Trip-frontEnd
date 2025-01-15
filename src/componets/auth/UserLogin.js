@@ -1,6 +1,5 @@
 
 
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { isEmail } from "validator";
@@ -16,7 +15,7 @@ import { useDispatch } from "react-redux";
 import { startGetVehicle } from '../../actions/vehicleAction';
 import {startGetMyTrip} from '../../actions/bookingAction'
 import {startGetUnApprovedVehicles} from '../../actions/adminAction'
-import { startGetDriverorder } from "../../actions/driverAction";
+import { startGetDriverorder ,startGetDriverStatistics} from "../../actions/driverAction";
 import taxi2 from '../images/taxi2.avif'
 
 const UserLogin = () => {
@@ -54,7 +53,6 @@ const UserLogin = () => {
       const formData = { email, password };
       const response = await axios.post('api/login', formData); 
       localStorage.setItem('token', response.data.token);
-
       const profile = await axios.get('api/profile', {
         headers: {
           'Authorization': localStorage.getItem('token')
@@ -69,6 +67,7 @@ const UserLogin = () => {
       if (profile.data.role === 'driver') {
         dispatch(startGetVehicle());
         dispatch(startGetDriverorder())
+        dispatch(startGetDriverStatistics())
       }
 
       if(profile.data.role==='customer'){
@@ -145,7 +144,7 @@ const UserLogin = () => {
           <Col md={6}>
           <Container className="login-container">
       {/* <Row className="justify-content-center"> */}
-        <Row className="login-form">
+        <Row className="login-form" style={{}}>
         <Col md={6} >
           {serverError.length > 0 && (
             <div className="alert alert-danger">

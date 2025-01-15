@@ -28,9 +28,7 @@ const bookingReducer=(state=intialBookState,action)=>{
      case 'USER_TRIP':{
         return{...state,myTrip:action.payload}
      }
-   //   case 'DRIVER_ORDER':{
-   //    return {...state,myOrder:action.payload}
-   //   }
+  
     default:{
         return {...state}
     }

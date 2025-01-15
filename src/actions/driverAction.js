@@ -18,6 +18,23 @@ export const startGetDriverorder=()=>{
     }
 }
 
+export const startGetDriverStatistics=()=>{
+    console.log('driver statitics')
+    return async(dispatch)=>{
+         try{
+    const driverStatisticsResponse = await axios.get('api/driver/dashboard',{
+                headers:{
+                    Authorization:localStorage.getItem('token')
+                }
+            })
+//   console.log(driverStatisticsResponse.data,'statitics2')
+  dispatch(setMyDashBoard(driverStatisticsResponse.data))
+         }catch(error){
+
+         }
+    }
+}
+
 export const startAcceptOrder=(body)=>{
     console.log(body)
     return async(dispatch)=>{
@@ -117,9 +134,18 @@ export const endTripOtpVerify=(body)=>{
 }
 
 
+
+
 const setMyOrders=(data)=>{
     return{
         type:"DRIVER_ORDER",
+        payload:data
+    }
+}
+
+const setMyDashBoard=(data)=>{
+    return{
+        type:"DRIVER_STATISTICS",
         payload:data
     }
 }

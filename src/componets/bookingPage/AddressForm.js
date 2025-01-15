@@ -142,18 +142,25 @@ function AddressForm({ vehicle }) {
 
   const handeleConfirm=()=>{
     // console.log('booking')
-    // console.log(estimateAmount ,'dataaaaa')
+    console.log(estimateAmount ,'dataaaaa')
 
-  dispatch(startBooking(estimateAmount,navigate))
-  
-  
+
+  dispatch(startBooking(estimateAmount,navigate))  
   }
+
+  const handleStartDateChange = (date) => {
+    setStartDate(date);
+    // Calculate max end date (three days after the selected start date)
+    const maxEndDate = new Date(date);
+    maxEndDate.setDate(maxEndDate.getDate() + 3);
+    setEndDate(endDate => endDate ? (endDate > maxEndDate ? maxEndDate : endDate) : maxEndDate);
+  };
 
   return (
     <div className="col-6">
       <form onSubmit={handleSubmit}>
         <div>
-          <Row className="mb-3">
+          {/* <Row className="mb-3">
             <Col>
               <Form.Group controlId="startDate">
                 <Form.Label>Trip Start Date:</Form.Label>
@@ -171,7 +178,7 @@ function AddressForm({ vehicle }) {
             <Col>
               <Form.Group controlId="endDate">
                 <Form.Label>Trip End Date:</Form.Label>
-                <DatePicker
+                <DatePicker maxDate={startDate}
                   selected={endDate}
                   onChange={(date) => setEndDate(date)}
                   showTimeSelect
@@ -180,7 +187,36 @@ function AddressForm({ vehicle }) {
                 />
               </Form.Group>
             </Col>
-          </Row>
+          </Row> */}
+           <Row className="mb-3">
+        <Col>
+          <Form.Group controlId="startDate">
+            <Form.Label>Trip Start Date:</Form.Label>
+            <DatePicker
+              selected={startDate}
+              onChange={handleStartDateChange}
+              showTimeSelect
+              minDate={today}
+              dateFormat="dd-MM-yyyy HH:mm aa"
+            />
+          </Form.Group>
+        </Col>
+      </Row>
+      <Row className="mb-3">
+        <Col>
+          <Form.Group controlId="endDate">
+            <Form.Label>Trip End Date:</Form.Label>
+            <DatePicker
+              selected={endDate}
+              onChange={(date) => setEndDate(date)}
+              showTimeSelect
+              minDate={startDate || today}
+              maxDate={startDate ? new Date(startDate.getTime() + (3 * 24 * 60 * 60 * 1000)) : null} // 3 days in milliseconds
+              dateFormat="dd-MM-yyyy HH:mm aa"
+            />
+          </Form.Group>
+        </Col>
+      </Row>
         </div>
         <div>
           <Row className="mb-3">
@@ -264,11 +300,10 @@ function AddressForm({ vehicle }) {
             </Col>
           </Row>
         </div>
+        
         {/* {estimateAmount== null?(<Button type="submit">Estimate Price</Button>):(
          
              <Button type="submit">RecalculatePrice</Button>
-         
-
         )} */}
 
 

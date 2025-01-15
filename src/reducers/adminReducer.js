@@ -10,9 +10,7 @@ const adminReducer=(state=initialVehicle,action)=>{
         case 'APPROVE_VEHICLE':{
             return {...state,vehicleProfile:state.vehicleProfile.filter((ele)=>ele.id!==action.payload)}
         }
-        // case 'REJECT_VEHICLE':{
-        //     return {...state,vehicleProfile:state.vehicleProfile.filter((ele)=>ele.id!==action.payload)}
-        // }
+       
 
         default:{
             return{...state}

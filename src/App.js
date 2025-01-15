@@ -14,6 +14,7 @@ import VehicleResult from './componets/serachResult/VehicleResult';
 import MyVehicle from './componets/vehicleDetails/MyVehicle';
 
 import AddVehicle from "./componets/vehicleDetails/AddVehicle.js"
+import DriverDashBoard from './componets/vehicleDetails/DriverDashBoard.js';
 import Book from './componets/bookingPage/Book';
 // import MyTrip from './componets/myTrip/mytrip.js'
 // import MyTrip from './componets/myTrip/'
@@ -42,7 +43,7 @@ import { useDispatch } from 'react-redux';
 import { startGetVehicle } from './actions/vehicleAction';
 import { startGetMyTrip } from './actions/bookingAction';
 import { startGetUnApprovedVehicles } from './actions/adminAction';
-import { startGetDriverorder } from './actions/driverAction.js';
+import { startGetDriverorder,startGetDriverStatistics } from './actions/driverAction.js';
 
 export const UserContext = createContext();
 function App() {
@@ -69,6 +70,7 @@ const dispatch=useDispatch()
           if(jwtDecode(localStorage.getItem('token')).role==='driver'){
             dispatch(startGetVehicle())
             dispatch(startGetDriverorder())
+            dispatch(startGetDriverStatistics())
           }
 
           if(jwtDecode(localStorage.getItem('token')).role==='customer'){
@@ -109,6 +111,7 @@ const dispatch=useDispatch()
       <Route path='/vehicleresult' element={<VehicleResult/>}/>
       <Route path='/addvehicle' element={<AddVehicle/>}/>
       <Route path='/myvehicle' element={<MyVehicle/>}/>
+      <Route path='/dashboard' element={<DriverDashBoard/>}/>
       <Route path='/myTrip' element={<TripDetails/>}/>
       <Route path='/book' element={<Book/>}/>
 
