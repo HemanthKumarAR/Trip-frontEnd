@@ -1,10 +1,12 @@
 
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Card, Col, Modal, Row } from 'react-bootstrap';
 import { useDispatch ,useSelector} from 'react-redux';
 import { startAcceptOrder, startRejectOrder,startTrip ,startTripOtpVerify,endTripOtpVerify} from '../../../actions/driverAction';
 import { ToastContainer } from 'react-toastify';
+
+import OTPInput from "otp-input-react";
 
 
 
@@ -65,7 +67,6 @@ function MyOrderDetails({ myOrder }) {
     console.log('start trip');
     setShowEndTripModal(true);
     dispatch(startTrip(tripId))
-
   }
 
   const handleEndTripVerification = () => {
@@ -78,6 +79,8 @@ function MyOrderDetails({ myOrder }) {
    setShowEndTripModal(false);
    setOTP('')
   };
+
+  useEffect(()=>{console.log('otp',otp)},[otp])  //otp
 
   return (
     <>
@@ -99,8 +102,8 @@ function MyOrderDetails({ myOrder }) {
           <Col md={6}>
             <Card.Text><strong>Pick-up Location:</strong> {myOrder.pickUplocation.address}</Card.Text>
             <Card.Text><strong>Drop-off Location:</strong> {myOrder.dropOfflocation.address}</Card.Text>
-            <Card.Text><strong>Total Amount:</strong> {myOrder.totalAmount}</Card.Text>
-            <Card.Text><strong>Total Distance:</strong> {myOrder.totalDistance}</Card.Text>
+            <Card.Text><strong>Total Amount:</strong> ₹{myOrder.totalAmount}</Card.Text>
+            <Card.Text><strong>Total Distance:</strong> {myOrder.totalDistance} km</Card.Text>
 
             {myOrder.tripStatus === 'bookingPlaced' && (
               <div style={{display:'flex', justifyContent:'space-around', margin:"40px 0 0 0"}}>
@@ -152,12 +155,13 @@ function MyOrderDetails({ myOrder }) {
           <Modal.Title>Verify OTP</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <input
+        <OTPInput value={otp} onChange={setOTP} autoFocus OTPLength={4} otpType="number" disabled={false} />
+          {/* <input
             type="text"
             value={otp}
             onChange={(e) => setOTP(e.target.value)}
             placeholder="Enter OTP..."
-          />
+          /> */}
           <Button onClick={handleVerifyOTP}>Verify OTP</Button>
           {verificationStatus === 'success' && (
             <p style={{ color: 'green' }}>OTP verified successfully. Trip started!</p>
